@@ -86,9 +86,9 @@ Function.prototype.curry = function(numArgs){
     args.push(arg);
 
     if (args.length === numArgs) {
-      return fn.apply( fn, args);
-    } else {
-      return _curry;
+      return fn.apply(null, args); //undefined, null works well.
+    } else {                      // this just means that the functions default on defined on the global scope
+      return _curry;            //unless they are binded to an object
     }
   };
   return _curry;
